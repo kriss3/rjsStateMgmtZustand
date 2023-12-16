@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const styles = {
+  container: { width: "40%" },
+};
+
+const App = () => {
+
+  const [count, setCount] = useState(0);
+
+  const increment = () => setCount((prevCount) => prevCount + 1);
+  const decrement = () => setCount((prevCount) => prevCount - 1);
+  const reset = () => setCount(0);
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <h1 className="text-center mt-5">Counter</h1>
+      <div className="container">
+        <div className="App-border counter p-5" style={styles.container}>
+          <p className="text-center text-light h1 mb-2">{count}</p>
+          <div className="d-flex justify-content-center mb-3">
+            <button
+              onClick={increment}
+              className="App-button-50 btn btn-outline-light btn-sm"
+            >
+              +
+            </button>
+            <button
+              onClick={decrement}
+              className="App-button-50 btn btn-outline-light btn-sm mx-2"
+            >
+              -
+            </button>
+            <button
+              onClick={reset}
+              className="App-button-50 btn btn-outline-dark btn-sm"
+            >
+              <img
+                src="https://img.icons8.com/android/24/212529/recurring-appointment.png"
+                alt="reset"
+              />
+            </button>
+          </div>
+        </div>
+
+        <hr />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
 export default App
